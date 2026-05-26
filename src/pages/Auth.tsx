@@ -29,6 +29,8 @@ import {
   Mail,
   Lock,
   User,
+  Eye,
+  EyeOff,
 } from "lucide-react";
 
 import { z } from "zod";
@@ -283,14 +285,28 @@ const Auth = () => {
 
                     <Input
                       id="signin-password"
-                      type="password"
+                      type={showPassword ? "text" : "password"}
                       value={signInPassword}
                       onChange={(e) =>
                         setSignInPassword(e.target.value)
                       }
                       required
-                      className="pl-12 h-12 bg-slate-900/50 border-slate-700 text-white focus:border-cyan-400 focus:ring-cyan-400 rounded-xl"
+                      className="pl-12 pr-12 h-12 bg-slate-900/50 border-slate-700 text-white focus:border-cyan-400 focus:ring-cyan-400 rounded-xl"
                     />
+
+                    <button
+                      type="button"
+                      onClick={() =>
+                        setShowPassword(!showPassword)
+                      }
+                      className="absolute right-4 top-3 text-slate-400 hover:text-cyan-400 transition-colors duration-200"
+                    >
+                      {showPassword ? (
+                        <EyeOff size={20} />
+                      ) : (
+                        <Eye size={20} />
+                      )}
+                    </button>
                   </div>
                 </div>
 
